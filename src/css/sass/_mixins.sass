@@ -1,0 +1,33 @@
+$xsmall-width: 375px
+$small-width: 640px
+$medium-width: 900px
+$large-width: 1280px
+$xlarge-width: 1441px
+
+=xsmall
+  @media (min-width: #{$xsmall-width})
+    @content
+
+=small
+  @media (min-width: #{$small-width})
+    @content
+
+=medium
+  @media (min-width: #{$medium-width})
+    @content
+
+=large
+  @media (min-width: #{$large-width})
+    @content
+
+=xlarge
+  @media (min-width: #{$xlarge-width})
+    @content
+
+=easeall
+  transition: all .2s ease-out
+
+=fk-shadow
+  box-shadow: 0 8px 24px 0 rgba($color-dark, .1)
+
+
