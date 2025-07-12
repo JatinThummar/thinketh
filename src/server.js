@@ -17,16 +17,6 @@ app.use(express.static(path.join(__dirname, '../build')));
 app.set('view engine', 'pug');
 app.set('views', __dirname);
 
-// Add debug logging for template rendering
-app.use((req, res, next) => {
-  const render = res.render;
-  res.render = function() {
-    console.log('Render called with:', arguments);
-    return render.apply(this, arguments);
-  }
-  next();
-});
-
 // Redirect root to default language
 app.get('/', (req, res) => {
   res.redirect(`/${DEFAULT_LANGUAGE}`);
@@ -38,28 +28,33 @@ app.get('/:lang', (req, res) => {
   
   // Validate language
   if (!SUPPORTED_LANGUAGES.includes(lang)) {
-    console.log(`Invalid language requested: ${lang}, redirecting to ${DEFAULT_LANGUAGE}`);
     return res.redirect(`/${DEFAULT_LANGUAGE}`);
   }
 
   // Check if language content exists
   const contentPath = path.join(__dirname, 'includes', lang, 'content.pug');
-  console.log('Looking for content at:', contentPath);
-  
   if (!fs.existsSync(contentPath)) {
-    console.error(`Content not found for language: ${lang} at path: ${contentPath}`);
+    console.error(`Content not found for language: ${lang}`);
     return res.redirect(`/${DEFAULT_LANGUAGE}`);
   }
 
-  console.log(`Rendering page for language: ${lang}`);
   res.render('index', { 
     currentLocale: lang,
     supportedLanguages: SUPPORTED_LANGUAGES
   });
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-  console.log(`Supported languages: ${SUPPORTED_LANGUAGES.join(', ')}`);
-  console.log(`Default language: ${DEFAULT_LANGUAGE}`);
+// Handle 404
+app.use((req, res) => {
+  res.status(404).redirect(`/${DEFAULT_LANGUAGE}`);
 });
+
+// Only listen on port if not running on Vercel
+if (process.env.VERCEL !== '1') {
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
+
+// Export the app for Vercel
+module.exports = app;

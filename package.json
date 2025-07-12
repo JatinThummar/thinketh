@@ -3,12 +3,20 @@
   "version": "1.0.0",
   "description": "Multilingual version of As a Man Thinketh",
   "main": "src/server.js",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "build": "mkdir -p dist && cp -r src/* dist/ && cp -r build/* dist/",
+    "serve": "node dist/server.js",
+    "build:static": "node src/build.js",
+    "serve:static": "cd docs && python3 -m http.server 3002"
   },
   "dependencies": {
     "express": "^4.18.2",
+    "fs-extra": "^11.3.0",
     "pug": "^3.0.2"
   },
   "devDependencies": {
