@@ -9,9 +9,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "build": "mkdir -p dist && cp -r src/* dist/ && cp -r build/* dist/",
-    "serve": "node dist/server.js",
-    "build:static": "node src/build.js",
+    "build:dev": "NODE_ENV=development node src/build.js",
+    "build:prod": "NODE_ENV=production node src/build.js",
     "serve:static": "cd docs && python3 -m http.server 3002"
   },
   "dependencies": {

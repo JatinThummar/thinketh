@@ -4,8 +4,12 @@ const path = require('path');
 
 const SUPPORTED_LANGUAGES = ['en', 'hi'];
 const BUILD_DIR = path.join(__dirname, '../docs');
-// Base path for GitHub Pages (empty string for local development)
-const BASE_PATH = '/thinketh';
+
+// Base path is conditional based on environment
+const isDev = process.env.NODE_ENV === 'development';
+const BASE_PATH = isDev ? '' : '/thinketh';
+
+console.log(`Building for ${isDev ? 'development' : 'production'} with base path: "${BASE_PATH}"`);
 
 // Ensure build directory exists and is empty
 fs.emptyDirSync(BUILD_DIR);
@@ -14,8 +18,8 @@ fs.emptyDirSync(BUILD_DIR);
 const cssDir = path.join(BUILD_DIR, 'css');
 fs.ensureDirSync(cssDir);
 fs.copyFileSync(
-  path.join(__dirname, '../build/css/screen.css'),  // Original CSS path
-  path.join(cssDir, 'style.css')  // New CSS path
+  path.join(__dirname, 'css/style.css'),
+  path.join(cssDir, 'style.css')
 );
 
 // Compile index for each language
@@ -29,6 +33,7 @@ SUPPORTED_LANGUAGES.forEach(lang => {
     currentLocale: lang,
     supportedLanguages: SUPPORTED_LANGUAGES,
     basePath: BASE_PATH,
+    isDev: isDev,
     pretty: true
   });
 

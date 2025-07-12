@@ -10,14 +10,15 @@ html(lang=currentLocale)
       meta(name="MobileOptimized" content="320")
       meta(name="viewport" content="width=device-width, initial-scale=1.0")
       meta(name='description', content="As a Man Thinketh by James Allen. Website by MDS")
+      - const base = basePath || ''
 
     block stylesandscripts
-      link(rel="stylesheet" type="text/css" href="/thinketh/css/style.css")
+      link(rel="stylesheet" type="text/css" href=`${base}/css/style.css`)
 
   body
     .language-switcher
-      a(href="/thinketh/en/" class=currentLocale === 'en' ? 'active' : '') English
-      a(href="/thinketh/hi/" class=currentLocale === 'hi' ? 'active' : '') हिंदी
+      a(href=`${base}/en/` class=currentLocale === 'en' ? 'active' : '') English
+      a(href=`${base}/hi/` class=currentLocale === 'hi' ? 'active' : '') हिंदी
 
     block content
 
