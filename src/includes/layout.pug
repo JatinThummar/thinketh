@@ -10,21 +10,21 @@ html(lang=currentLocale)
       meta(name="MobileOptimized" content="320")
       meta(name="viewport" content="width=device-width, initial-scale=1.0")
       meta(name='description', content="As a Man Thinketh by James Allen. Website by MDS")
-      - const base = basePath || ''
 
     block stylesandscripts
-      link(rel="stylesheet" type="text/css" href=`${base}/css/style.css`)
+      //- Use the explicit CSS path provided by the build script
+      link(rel="stylesheet" type="text/css" href=cssPath)
 
   body
     .language-switcher
       if currentLocale === 'hi'
         //- When in Hindi, show link to root for English
-        a(href=`${base}/` class="") English
-        a(href=`${base}/hi/` class="active") हिंदी
+        a(href=`${basePath}/` class="") English
+        a(href=`${basePath}/hi/` class="active") हिंदी
       else
         //- When in English (either root or /en/), keep current behavior
-        a(href=`${base}/` class="active") English
-        a(href=`${base}/hi/` class="") हिंदी
+        a(href=`${basePath}/` class="active") English
+        a(href=`${basePath}/hi/` class="") हिंदी
 
     block content
 

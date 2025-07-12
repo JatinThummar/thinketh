@@ -14,13 +14,17 @@ console.log(`Building for ${isDev ? 'development' : 'production'} with base path
 // Ensure build directory exists and is empty
 fs.emptyDirSync(BUILD_DIR);
 
-// Copy CSS file
+// Copy CSS file - ensuring we copy the right CSS file
 const cssDir = path.join(BUILD_DIR, 'css');
 fs.ensureDirSync(cssDir);
+
+// Copy and rename the CSS file
 fs.copyFileSync(
   path.join(__dirname, '../build/css/screen.css'),
   path.join(cssDir, 'style.css')
 );
+
+console.log('CSS file copied to:', path.join(cssDir, 'style.css'));
 
 // Function to render a page with given locale
 const renderPage = (locale) => {
@@ -29,7 +33,8 @@ const renderPage = (locale) => {
     supportedLanguages: SUPPORTED_LANGUAGES,
     basePath: BASE_PATH,
     isDev: isDev,
-    pretty: true
+    pretty: true,
+    cssPath: `${BASE_PATH}/css/style.css` // Explicit CSS path
   });
 };
 
