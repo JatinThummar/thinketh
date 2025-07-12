@@ -17,8 +17,14 @@ html(lang=currentLocale)
 
   body
     .language-switcher
-      a(href=`${base}/en/` class=currentLocale === 'en' ? 'active' : '') English
-      a(href=`${base}/hi/` class=currentLocale === 'hi' ? 'active' : '') हिंदी
+      if currentLocale === 'hi'
+        //- When in Hindi, show link to root for English
+        a(href=`${base}/` class="") English
+        a(href=`${base}/hi/` class="active") हिंदी
+      else
+        //- When in English (either root or /en/), keep current behavior
+        a(href=`${base}/` class="active") English
+        a(href=`${base}/hi/` class="") हिंदी
 
     block content
 

@@ -5,10 +5,11 @@ block head
 	title As a Man Thinketh
 
 block content
-	if currentLocale === 'en'
-		include includes/en/content.pug
-	else if currentLocale === 'hi'
+	if currentLocale === 'hi'
 		include includes/hi/content.pug
+	else
+		//- Default to English for both root and /en/
+		include includes/en/content.pug
 //- block foot gets imported here from layout.pug
 
 

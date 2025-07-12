@@ -18,45 +18,29 @@ fs.emptyDirSync(BUILD_DIR);
 const cssDir = path.join(BUILD_DIR, 'css');
 fs.ensureDirSync(cssDir);
 fs.copyFileSync(
-  path.join(__dirname, 'css/style.css'),
+  path.join(__dirname, '../build/css/screen.css'),
   path.join(cssDir, 'style.css')
 );
 
-// Compile index for each language
-SUPPORTED_LANGUAGES.forEach(lang => {
-  // Create language directory
-  const langDir = path.join(BUILD_DIR, lang);
-  fs.ensureDirSync(langDir);
-
-  // Render page with appropriate content
-  const html = pug.renderFile(path.join(__dirname, 'index.pug'), {
-    currentLocale: lang,
+// Function to render a page with given locale
+const renderPage = (locale) => {
+  return pug.renderFile(path.join(__dirname, 'index.pug'), {
+    currentLocale: locale,
     supportedLanguages: SUPPORTED_LANGUAGES,
     basePath: BASE_PATH,
     isDev: isDev,
     pretty: true
   });
+};
 
-  // Write HTML file
-  fs.writeFileSync(path.join(langDir, 'index.html'), html);
+// Build language-specific pages
+SUPPORTED_LANGUAGES.forEach(lang => {
+  const langDir = path.join(BUILD_DIR, lang);
+  fs.ensureDirSync(langDir);
+  fs.writeFileSync(path.join(langDir, 'index.html'), renderPage(lang));
 });
 
-// Create root index.html that redirects to default language
-const redirectHTML = `
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=${BASE_PATH}/en/">
-    <script>window.location.href = "${BASE_PATH}/en/";</script>
-  </head>
-  <body>
-    <p>Redirecting to <a href="${BASE_PATH}/en/">English version</a>...</p>
-  </body>
-</html>
-`;
-
-fs.writeFileSync(path.join(BUILD_DIR, 'index.html'), redirectHTML);
+// Create root index.html with English content (no redirect)
+fs.writeFileSync(path.join(BUILD_DIR, 'index.html'), renderPage('en'));
 
 console.log('Static site generated in /docs directory!');
