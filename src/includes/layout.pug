@@ -12,42 +12,12 @@ html(lang=currentLocale)
       meta(name='description', content="As a Man Thinketh by James Allen. Website by MDS")
 
     block stylesandscripts
-      link(rel="stylesheet" type="text/css" href="/css/screen.css")
-      style.
-        .language-switcher {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          z-index: 1000;
-          background: white;
-          padding: 10px;
-          border-radius: 5px;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .language-switcher a {
-          display: inline-block;
-          padding: 5px 10px;
-          margin: 0 5px;
-          cursor: pointer;
-          border: 1px solid #ccc;
-          border-radius: 3px;
-          background: white;
-          text-decoration: none;
-          color: #333;
-        }
-        .language-switcher a:hover {
-          background: #f0f0f0;
-        }
-        .language-switcher a.active {
-          background: #007bff;
-          color: white;
-          border-color: #0056b3;
-        }
+      link(rel="stylesheet" type="text/css" href="/thinketh/css/style.css")
 
   body
     .language-switcher
-      a(href="/en/" class=currentLocale === 'en' ? 'active' : '') English
-      a(href="/hi/" class=currentLocale === 'hi' ? 'active' : '') हिंदी
+      a(href="/thinketh/en/" class=currentLocale === 'en' ? 'active' : '') English
+      a(href="/thinketh/hi/" class=currentLocale === 'hi' ? 'active' : '') हिंदी
 
     block content
 
