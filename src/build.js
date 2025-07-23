@@ -2,7 +2,7 @@ const pug = require('pug');
 const fs = require('fs-extra');
 const path = require('path');
 
-const SUPPORTED_LANGUAGES = ['en', 'hi'];
+const SUPPORTED_LANGUAGES = ['en', 'gu'];
 const BUILD_DIR = path.join(__dirname, '../docs');
 
 // Base path is conditional based on environment
