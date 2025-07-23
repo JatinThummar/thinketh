@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // Supported languages
-const SUPPORTED_LANGUAGES = ['en', 'hi'];
+const SUPPORTED_LANGUAGES = ['en', 'gu'];
 const DEFAULT_LANGUAGE = 'en';
 
 // Serve static files

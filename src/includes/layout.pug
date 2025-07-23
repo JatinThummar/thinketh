@@ -17,14 +17,14 @@ html(lang=currentLocale)
 
   body
     .language-switcher
-      if currentLocale === 'hi'
-        //- When in Hindi, show link to root for English
+      if currentLocale === 'gu'
+        //- When in Gujarati, show link to root for English
         a(href=`${basePath}/` class="") English
-        a(href=`${basePath}/hi/` class="active") हिंदी
+        a(href=`${basePath}/gu/` class="active") Gujrati
       else
         //- When in English (either root or /en/), keep current behavior
         a(href=`${basePath}/` class="active") English
-        a(href=`${basePath}/hi/` class="") हिंदी
+        a(href=`${basePath}/gu/` class="") Gujrati
 
     block content
 
