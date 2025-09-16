@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "next": "^14.2.5",
+    "pug": "^3.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "pug": "^3.0.2",
     "tslib": "^2.6.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
   }
 }
