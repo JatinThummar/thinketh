@@ -1,24 +1,19 @@
 {
   "name": "thinketh",
-  "version": "1.0.0",
-  "description": "Multilingual version of As a Man Thinketh",
-  "main": "src/server.js",
-  "engines": {
-    "node": ">=14.0.0"
-  },
+  "version": "2.0.0",
+  "private": true,
+  "description": "As a Man Thinketh — static Next.js site with multilingual Pug content",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "build:dev": "NODE_ENV=development node src/build.js",
-    "build:prod": "NODE_ENV=production node src/build.js",
-    "serve:static": "cd docs && python3 -m http.server 3002"
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "build:static": "next build && next export"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "fs-extra": "^11.3.0",
-    "pug": "^3.0.2"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
+    "next": "^14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "pug": "^3.0.2",
+    "tslib": "^2.6.3"
   }
 }

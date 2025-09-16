@@ -4,6 +4,8 @@ node_modules/
 # Build artifacts
 build/
 dist/
+.next/
+out/
 
 # Environment files
 .env
@@ -12,8 +14,7 @@ dist/
 # System files
 .DS_Store
 *.log
-.vercel
-readme.md
 
-# Do NOT ignore docs folder as it contains our static site for GitHub Pages
-!docs/
+.vercel
+
+# GitHub Pages deploy handled via Actions artifact, not docs/
