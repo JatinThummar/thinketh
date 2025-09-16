@@ -2,7 +2,7 @@ name: Deploy Next.js static site to GitHub Pages
 
 on:
   push:
-    branches: [ main, master, next-pages ]
+    branches: [ main, master, next-pages, next-root ]
   workflow_dispatch:
 
 permissions:
@@ -17,9 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: thinketh-next
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,10 +26,9 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: thinketh-next/package.json
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Set base path for Pages
         run: |
@@ -46,16 +42,17 @@ jobs:
       - name: Build static export
         env:
           NEXT_BASE_PATH: ${{ env.NEXT_BASE_PATH }}
-        run: npm run build:static
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: thinketh-next/out
+          path: out
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -63,4 +60,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
