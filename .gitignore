@@ -13,6 +13,7 @@ dist/
 .DS_Store
 *.log
 .vercel
+readme.md
 
 # Do NOT ignore docs folder as it contains our static site for GitHub Pages
 !docs/
