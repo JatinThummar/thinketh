@@ -1,10 +1,22 @@
 /* Minimal base styles */
 :root {
-  --primary-color: #007bff;
-  --hover-color: #0056b3;
-  --text-color: #333;
-  --light-bg: #f8f9fa;
-  --border-color: #dee2e6;
+  --primary-color: #3a6aff;
+  --hover-color: #2c4dcc;
+  --text-color: #1a1a1a;
+  --muted-text: #5c5c5c;
+  --bg: #ffffff;
+  --panel: #f6f7f9;
+  --border-color: #e5e7eb;
+}
+
+[data-theme='dark'] {
+  --primary-color: #7aa2ff;
+  --hover-color: #9bb9ff;
+  --text-color: #e5e7eb;
+  --muted-text: #a3a3a3;
+  --bg: #0b0d12;
+  --panel: #12151d;
+  --border-color: #232836;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,9 +27,21 @@ body {
   margin: 0 auto;
   padding: 0 1rem 3rem;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  line-height: 1.6;
+  line-height: 1.75;
   color: var(--text-color);
-  background: #fff;
+  background: var(--bg);
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  background: var(--bg);
+  z-index: 10;
 }
 
 .language-switcher {
@@ -26,10 +50,7 @@ body {
   display: flex;
   gap: 8px;
   justify-content: flex-end;
-  padding: 12px;
-  background: rgba(255,255,255,0.9);
-  backdrop-filter: saturate(180%) blur(8px);
-  border-bottom: 1px solid var(--border-color);
+  padding: 0;
 }
 
 .language-switcher a {
@@ -49,4 +70,20 @@ body {
 .content { padding-top: 1rem; }
 h1, h2, h3 { margin: 1.5rem 0 .5rem; line-height: 1.25; }
 p { margin-bottom: 1rem; }
+
+/* Theme toggle */
+.theme-toggle { display: inline-flex; gap: 6px; }
+.theme-toggle button {
+  padding: 6px 10px; border: 1px solid var(--border-color); background: var(--panel); color: var(--text-color); border-radius: 6px; cursor: pointer;
+}
+.theme-toggle button.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+
+/* Reading enhancements */
+.content {
+  font-size: clamp(1rem, 1.1vw + 0.9rem, 1.15rem);
+}
+.content p { text-wrap: pretty; }
+.content h1 { font-size: 2.25rem; margin-top: 1.75rem; }
+.content h2 { font-size: 1.75rem; margin-top: 1.5rem; }
+.content h3 { font-size: 1.35rem; margin-top: 1.25rem; }
 

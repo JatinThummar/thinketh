@@ -5,16 +5,40 @@ const notoSerifLatin = Noto_Serif({ subsets: ['latin'], variable: '--font-serif-
 const notoSerifDev = Noto_Serif_Devanagari({ subsets: ['devanagari', 'latin'], variable: '--font-serif-dev', weight: ['400','700'] });
 const notoSerifGu = Noto_Serif_Gujarati({ subsets: ['gujarati', 'latin'], variable: '--font-serif-gu', weight: ['400','700'] });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://jatinthummar.github.io/thinketh';
+
 export const metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'As a Man Thinketh',
   description: 'As a Man Thinketh — multilingual static site',
   icons: { icon: '/favicon.svg' },
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0b0d12' },
+  ],
+  openGraph: {
+    type: 'website',
+    url: '/',
+    title: 'As a Man Thinketh',
+    description: 'Free multilingual edition (English, Gujarati, Hindi) — static, fast, readable.',
+    siteName: 'As a Man Thinketh',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'As a Man Thinketh',
+    description: 'Free multilingual edition (English, Gujarati, Hindi) — static, fast, readable.',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${notoSerifLatin.variable} ${notoSerifDev.variable} ${notoSerifGu.variable}`}>
       <body style={{ fontFamily: 'var(--font-serif-gu), var(--font-serif-dev), var(--font-serif-latin), serif' }}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {try {var t=localStorage.getItem('theme')||'system';var d=window.matchMedia('(prefers-color-scheme: dark)').matches;var r=t==='system'?(d?'dark':'light'):t;document.documentElement.setAttribute('data-theme', r);} catch(_) {}})();`,
+          }}
+        />
         {children}
       </body>
     </html>
