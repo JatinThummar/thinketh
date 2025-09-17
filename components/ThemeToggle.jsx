@@ -18,11 +18,23 @@ function applyTheme(theme) {
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [theme, setTheme] = useState('system');
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
+    setMounted(true);
+    const t = getInitialTheme();
+    setTheme(t);
+  }, []);
+  useEffect(() => {
+    if (!mounted) return;
     applyTheme(theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    try { localStorage.setItem('theme', theme); } catch {}
+  }, [theme, mounted]);
+
+  if (!mounted) {
+    // Avoid any server/client markup mismatch by rendering nothing until mounted
+    return null;
+  }
 
   return (
     <div className="theme-toggle" role="group" aria-label="Toggle theme">
@@ -44,4 +56,3 @@ export default function ThemeToggle() {
     </div>
   );
 }
-

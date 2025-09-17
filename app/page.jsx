@@ -1,5 +1,6 @@
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeToggle from '@/components/ThemeToggle';
+import ContentRenderer from '@/components/ContentRenderer';
 import { getSupportedLanguages } from '@/lib/i18n';
 import { renderPugForLang } from '@/lib/pugRender';
 import { version } from '@/lib/contentVersion';
@@ -16,6 +17,20 @@ export async function generateMetadata() {
     alternates: { canonical: '/', languages: alternates },
     title: 'As a Man Thinketh – English',
     description: 'Free multilingual edition in English, Gujarati and Hindi.',
+    openGraph: {
+      locale: 'en',
+      images: [
+        {
+          url: `${SITE_URL}/android-chrome-512x512.png`,
+          width: 512,
+          height: 512,
+          alt: 'As a Man Thinketh',
+        },
+      ],
+    },
+    twitter: {
+      images: [`${SITE_URL}/android-chrome-512x512.png`],
+    },
   };
 }
 
@@ -24,7 +39,7 @@ export default async function Page() {
   void version;
   const languages = getSupportedLanguages();
   const current = 'en';
-  const html = renderPugForLang(current);
+  const html = null; // no longer needed here; rendered via ContentRenderer
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Book',
@@ -40,11 +55,8 @@ export default async function Page() {
         <LanguageSwitcher current={current} languages={languages} />
         <ThemeToggle />
       </div>
-      <main className="content" dangerouslySetInnerHTML={{ __html: html }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <ContentRenderer lang={current} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </>
   );
 }

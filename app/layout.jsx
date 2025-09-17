@@ -11,7 +11,15 @@ export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'As a Man Thinketh',
   description: 'As a Man Thinketh — multilingual static site',
-  icons: { icon: '/favicon.svg' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: ['/favicon.ico'],
+  },
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#0b0d12' },
@@ -22,12 +30,22 @@ export const metadata = {
     title: 'As a Man Thinketh',
     description: 'Free multilingual edition (English, Gujarati, Hindi) — static, fast, readable.',
     siteName: 'As a Man Thinketh',
+    images: [
+      {
+        url: `${SITE_URL}/android-chrome-512x512.png`,
+        width: 512,
+        height: 512,
+        alt: 'As a Man Thinketh',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'As a Man Thinketh',
     description: 'Free multilingual edition (English, Gujarati, Hindi) — static, fast, readable.',
+    images: [`${SITE_URL}/android-chrome-512x512.png`],
   },
+  manifest: '/site.webmanifest',
 };
 
 export default function RootLayout({ children }) {

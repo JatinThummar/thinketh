@@ -7,6 +7,8 @@
   --bg: #ffffff;
   --panel: #f6f7f9;
   --border-color: #e5e7eb;
+  --heading-accent: #6a5acd; /* slate purple */
+  --heading-bg: #f4f2ff;
 }
 
 [data-theme='dark'] {
@@ -17,6 +19,8 @@
   --bg: #0b0d12;
   --panel: #12151d;
   --border-color: #232836;
+  --heading-accent: #b6a0ff;
+  --heading-bg: #181a24;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -69,6 +73,7 @@ body {
 
 .content { padding-top: 1rem; }
 h1, h2, h3 { margin: 1.5rem 0 .5rem; line-height: 1.25; }
+h2, h3 { scroll-margin-top: 72px; }
 p { margin-bottom: 1rem; }
 
 /* Theme toggle */
@@ -87,3 +92,58 @@ p { margin-bottom: 1rem; }
 .content h2 { font-size: 1.75rem; margin-top: 1.5rem; }
 .content h3 { font-size: 1.35rem; margin-top: 1.25rem; }
 
+/* Headings with anchor */
+.heading { position: relative; padding-right: 1.5em; scroll-margin-top: 72px; }
+.heading.accent {
+  background: var(--heading-bg);
+  border-left: 4px solid var(--heading-accent);
+  padding: .6rem .75rem .6rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+.heading .anchor {
+  opacity: 0;
+  margin-left: .5rem; text-decoration: none; color: var(--heading-accent);
+}
+.heading:hover .anchor { opacity: 1; }
+
+/* Blockquote */
+.blockquote {
+  position: relative;
+  margin: 1rem 0; padding: 1rem 1rem 1rem 2.5rem;
+  background: var(--panel);
+  border-left: 4px solid var(--border-color);
+  border-radius: 6px;
+}
+.blockquote .quote-mark {
+  position: absolute; left: .75rem; top: .35rem; font-size: 2rem; line-height: 1; color: var(--muted-text);
+}
+
+/* Inline highlight */
+.highlight { background: #fff3a3; color: inherit; padding: 0 .2em; border-radius: .2em; }
+
+/* Callout component */
+.callout {
+  display: grid;
+  grid-template-columns: 6px 1fr;
+  gap: 10px;
+  padding: 12px 14px;
+  border-left: 6px solid var(--primary-color);
+  background: var(--panel);
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+.callout-dot {
+  width: 6px; height: 6px; border-radius: 50%; margin-top: 6px;
+}
+.divider {
+  border: 0; border-top: 1px solid var(--border-color); margin: 1.25rem 0;
+}
+
+/* Vertical spacer */
+.spacer { width: 100%; }
+.spacer.xs { height: 8px; }
+.spacer.sm { height: 12px; }
+.spacer.md { height: 20px; }
+.spacer.lg { height: 32px; }
+.spacer.xl { height: 48px; }
