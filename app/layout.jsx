@@ -12,8 +12,8 @@ export const metadata = {
   title: 'As a Man Thinketh',
   description: 'As a Man Thinketh — multilingual static site',
   icons: {
-    icon: [{ url: `${process.env.NEXT_BASE_PATH || ''}/thinketh/favicon.ico` }],
-    apple: [{ url: `${process.env.NEXT_BASE_PATH || ''}/thinketh/apple-touch-icon.png`, sizes: '180x180', type: 'image/png' }],
+    icon: [{ url: `${process.env.NEXT_BASE_PATH || ''}/favicon.ico` }],
+    apple: [{ url: `${process.env.NEXT_BASE_PATH || ''}/apple-touch-icon.png`, sizes: '180x180', type: 'image/png' }],
   },
   // Icons are handled via public/ and basePath-aware metadata below or via app/ files
   openGraph: {
@@ -22,11 +22,20 @@ export const metadata = {
     title: 'As a Man Thinketh',
     description: 'Free multilingual edition (English, Gujarati, Hindi) — static, fast, readable.',
     siteName: 'As a Man Thinketh',
+    images: [
+      {
+        url: `${process.env.NEXT_BASE_PATH || ''}/demo_1220_628.webp`,
+        width: 1200,
+        height: 630,
+        alt: 'As a Man Thinketh',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'As a Man Thinketh',
     description: 'Free multilingual edition (English, Gujarati, Hindi) — static, fast, readable.',
+    images: [`${process.env.NEXT_BASE_PATH || ''}/demo_1220_628.webp`],
   },
   // Manifest is provided by app/manifest.js (Next injects link automatically)
 };

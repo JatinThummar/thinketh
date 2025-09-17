@@ -20,17 +20,10 @@ export async function generateMetadata({ params }) {
     openGraph: {
       locale: current,
       url: current === 'en' ? '/' : `/${current}/`,
-      images: [
-        {
-          url: `${SITE_URL}/android-chrome-512x512.png`,
-          width: 512,
-          height: 512,
-          alt: 'As a Man Thinketh',
-        },
-      ],
+      images: [{ url: `${process.env.NEXT_BASE_PATH || ''}/demo_1220_628.webp`, width: 1200, height: 630, alt: 'As a Man Thinketh' }],
     },
     twitter: {
-      images: [`${SITE_URL}/android-chrome-512x512.png`],
+      images: [`${process.env.NEXT_BASE_PATH || ''}/demo_1220_628.webp`],
     },
   };
 }
