@@ -12,8 +12,8 @@ export const metadata = {
   title: 'As a Man Thinketh',
   description: 'As a Man Thinketh — multilingual static site',
   icons: {
-    icon: [{ url: `${process.env.NEXT_BASE_PATH || ''}/favicon.ico` }],
-    apple: [{ url: `${process.env.NEXT_BASE_PATH || ''}/apple-touch-icon.png`, sizes: '180x180', type: 'image/png' }],
+    icon: [{ url: `${SITE_URL || ''}/favicon.ico` }],
+    apple: [{ url: `${SITE_URL || ''}/apple-touch-icon.png`, sizes: '180x180', type: 'image/png' }],
   },
   // Icons are handled via public/ and basePath-aware metadata below or via app/ files
   openGraph: {
