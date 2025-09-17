@@ -1,5 +1,4 @@
-import LanguageSwitcher from '@/components/LanguageSwitcher';
-import ThemeToggle from '@/components/ThemeToggle';
+import HeaderBar from '@/components/HeaderBar';
 import ContentRenderer from '@/components/ContentRenderer';
 import { getSupportedLanguages } from '@/lib/i18n';
 import { renderPugForLang } from '@/lib/pugRender';
@@ -57,10 +56,7 @@ export default async function LangPage({ params }) {
 
   return (
     <>
-      <div className="topbar">
-        <LanguageSwitcher current={current} languages={languages} />
-        <ThemeToggle />
-      </div>
+      <HeaderBar current={current} languages={languages} />
       <ContentRenderer lang={current} />
       <script
         type="application/ld+json"

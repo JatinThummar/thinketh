@@ -26,6 +26,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { font-size: 18px; }
+html, body { max-width: 100%; overflow-x: hidden; }
 body {
   max-width: 720px;
   margin: 0 auto;
@@ -36,26 +37,11 @@ body {
   background: var(--bg);
 }
 
-.topbar {
-  position: sticky;
-  top: 0;
-  display: flex;
-  gap: 12px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-  background: var(--bg);
-  z-index: 10;
-}
+.header { position: sticky; top: 0; background: var(--bg); z-index: 20; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; }
 
-.language-switcher {
-  position: sticky;
-  top: 0;
-  display: flex;
-  gap: 8px;
-  justify-content: flex-end;
-  padding: 0;
-}
+.language-switcher { display: flex; gap: 8px; justify-content: flex-start; padding: 0; }
+.lang-list { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
 
 .language-switcher a {
   display: inline-block;
@@ -66,6 +52,7 @@ body {
   background: var(--light-bg);
   border: 1px solid var(--border-color);
   border-radius: 6px;
+  white-space: nowrap;
 }
 
 .language-switcher a:hover { background: #e9ecef; }
@@ -96,7 +83,7 @@ p { margin-bottom: 1rem; }
 .heading { position: relative; padding-right: 1.5em; scroll-margin-top: 72px; }
 .heading.accent {
   background: var(--heading-bg);
-  border-left: 4px solid var(--heading-accent);
+  border-left: 6px solid var(--heading-accent);
   padding: .6rem .75rem .6rem 1rem;
   border-radius: 6px;
   margin-bottom: 16px;

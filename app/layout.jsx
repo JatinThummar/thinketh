@@ -45,7 +45,8 @@ export const metadata = {
     description: 'Free multilingual edition (English, Gujarati, Hindi) — static, fast, readable.',
     images: [`${SITE_URL}/android-chrome-512x512.png`],
   },
-  manifest: '/site.webmanifest',
+  // Use basePath-aware manifest path so it works on GitHub Pages
+  manifest: `${process.env.NEXT_BASE_PATH || ''}/site.webmanifest`,
 };
 
 export default function RootLayout({ children }) {
