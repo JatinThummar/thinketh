@@ -4,7 +4,7 @@
   "private": true,
   "description": "As a Man Thinketh — static Next.js site with multilingual Pug content",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/dev.js",
     "build": "next build",
     "build:static": "next build"
   },
@@ -16,6 +16,7 @@
     "tslib": "^2.6.3"
   },
   "devDependencies": {
+    "chokidar": "^3.6.0",
     "typescript": "^5.9.2"
   }
 }
