@@ -13,12 +13,12 @@ export const metadata = {
   description: 'As a Man Thinketh — multilingual static site',
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: `${process.env.NEXT_BASE_PATH || ''}/favicon.ico` },
+      { url: `${process.env.NEXT_BASE_PATH || ''}/favicon-32x32.png`, sizes: '32x32', type: 'image/png' },
+      { url: `${process.env.NEXT_BASE_PATH || ''}/favicon-16x16.png`, sizes: '16x16', type: 'image/png' },
     ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
-    shortcut: ['/favicon.ico'],
+    apple: [{ url: `${process.env.NEXT_BASE_PATH || ''}/apple-touch-icon.png`, sizes: '180x180', type: 'image/png' }],
+    shortcut: [`${process.env.NEXT_BASE_PATH || ''}/favicon.ico`],
   },
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
@@ -51,7 +51,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${notoSerifLatin.variable} ${notoSerifDev.variable} ${notoSerifGu.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${notoSerifLatin.variable} ${notoSerifDev.variable} ${notoSerifGu.variable}`}>
       <body style={{ fontFamily: 'var(--font-serif-gu), var(--font-serif-dev), var(--font-serif-latin), serif' }}>
         <script
           dangerouslySetInnerHTML={{

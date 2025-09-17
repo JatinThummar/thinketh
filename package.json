@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node scripts/dev.js",
     "build": "next build",
-    "build:static": "next build"
+    "build:static": "next build",
+    "start": "npx serve out -l 3044"
   },
   "dependencies": {
     "next": "^14.2.5",
