@@ -18,10 +18,10 @@ export async function generateMetadata() {
     description: 'Free multilingual edition in English, Gujarati and Hindi.',
     openGraph: {
       locale: 'en',
-      images: [{ url: `${SITE_URL || ''}/demo_1220_628.webp`, width: 1200, height: 630, alt: 'As a Man Thinketh' }],
+      images: [{ url: `${SITE_URL || ''}/thumbnail.png`, width: 1200, height: 630, alt: 'As a Man Thinketh' }],
     },
     twitter: {
-      images: [`${SITE_URL || ''}/demo_1220_628.webp`],
+      images: [`${SITE_URL || ''}/thumbnail.png`],
     },
   };
 }

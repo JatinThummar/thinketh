@@ -83,9 +83,10 @@ p { margin-bottom: 1rem; }
 .heading { position: relative; padding-right: 1.5em; scroll-margin-top: 72px; }
 .heading.accent {
   background: var(--heading-bg);
-  border-left: 6px solid var(--heading-accent);
+  border-bottom: 4px solid var(--heading-accent);
+  border-left: 4px solid var(--heading-accent);
   padding: .6rem .75rem .6rem 1rem;
-  border-radius: 6px;
+  border-radius: 12px;
   margin-bottom: 16px;
 }
 .heading .anchor {
