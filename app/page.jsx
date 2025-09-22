@@ -19,10 +19,10 @@ export async function generateMetadata() {
     openGraph: {
       locale: 'en',
       url: `${SITE_URL}/`,
-      images: [{ url: `${SITE_URL || ''}/thumbnail.png`, width: 1200, height: 630, alt: 'As a Man Thinketh' }],
+      images: [{ url: `${SITE_URL || ''}/thumbnail.jpg`, width: 1200, height: 630, alt: 'As a Man Thinketh' }],
     },
     twitter: {
-      images: [`${SITE_URL || ''}/thumbnail.png`],
+      images: [`${SITE_URL || ''}/thumbnail.jpg`],
     },
   };
 }
