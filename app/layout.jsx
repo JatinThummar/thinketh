@@ -24,7 +24,7 @@ export const metadata = {
     siteName: 'As a Man Thinketh',
     images: [
       {
-        url: `${process.env.NEXT_BASE_PATH || ''}/thumbnail.png`,
+        url: `${SITE_URL}/thumbnail.png`,
         width: 1200,
         height: 630,
         alt: 'As a Man Thinketh',
@@ -35,7 +35,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'As a Man Thinketh',
     description: 'Free multilingual edition (English, Gujarati, Hindi) — static, fast, readable.',
-    images: [`${process.env.NEXT_BASE_PATH || ''}/thumbnail.png`],
+    images: [`${SITE_URL}/thumbnail.png`],
   },
   // Manifest is provided by app/manifest.js (Next injects link automatically)
 };

@@ -18,6 +18,7 @@ export async function generateMetadata() {
     description: 'Free multilingual edition in English, Gujarati and Hindi.',
     openGraph: {
       locale: 'en',
+      url: `${SITE_URL}/`,
       images: [{ url: `${SITE_URL || ''}/thumbnail.png`, width: 1200, height: 630, alt: 'As a Man Thinketh' }],
     },
     twitter: {

@@ -19,11 +19,11 @@ export async function generateMetadata({ params }) {
     description: 'Free multilingual edition in English, Gujarati and Hindi.',
     openGraph: {
       locale: current,
-      url: current === 'en' ? '/' : `/${current}/`,
-      images: [{ url: `${process.env.NEXT_BASE_PATH || ''}/thumbnail.png`, width: 1200, height: 630, alt: 'As a Man Thinketh' }],
+      url: `${SITE_URL}${current === 'en' ? '/' : `/${current}/`}`,
+      images: [{ url: `${SITE_URL}/thumbnail.png`, width: 1200, height: 630, alt: 'As a Man Thinketh' }],
     },
     twitter: {
-      images: [`${process.env.NEXT_BASE_PATH || ''}/thumbnail.png`],
+      images: [`${SITE_URL}/thumbnail.png`],
     },
   };
 }
